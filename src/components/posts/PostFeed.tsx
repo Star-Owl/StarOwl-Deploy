@@ -16,7 +16,7 @@ const PostFeed: React.FC<PostFeedProps> = ({ userId }) => {
 		size,
 		setSize,
 		isReachingEnd,
-	} = usePosts(userId)
+	} = usePosts()
 
 	if (isLoadingInitialData) {
 		return <p>Loading...</p> // można dodać tutaj jakiś spinner lub ekran ładowania
@@ -78,26 +78,3 @@ const PostFeed: React.FC<PostFeedProps> = ({ userId }) => {
 }
 
 export default PostFeed
-
-// const PostFeed: React.FC<PostFeedProps> = ({ userId }) => {
-// 	const { data: followedUsers = [], error: followedUsersError } =
-// 		useFollowedUsers(userId)
-// 	const followedUsersIds = followedUsers.map((user: any) => user.id)
-// 	const { data: posts = [], error: postsError } = usePosts(followedUsersIds)
-
-// 	if (followedUsersError) {
-// 		return <div>Error loading followed users. Please try again later.</div>
-// 	}
-
-// 	if (postsError) {
-// 		return <div>Error loading posts. Please try again later.</div>
-// 	}
-
-// 	return (
-// 		<>
-// 			{posts.map((post: Record<string, any>) => (
-// 				<Post userId={post.userId} key={post.id} data={post} />
-// 			))}
-// 		</>
-// 	)
-// }

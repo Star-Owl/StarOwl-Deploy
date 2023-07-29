@@ -32,10 +32,10 @@ export default function Home() {
 		return <SplashScreen />
 	}
 
-	// const followedUsersIds =
-	// 	currentUser?.Following?.map((follower: any) => follower.followerId) ||
-	// 	[]
-	// const userIdsToShowPosts = [currentUser?.username, ...followedUsersIds]
+	const followedUsersIds =
+		currentUser?.Following?.map((follower: any) => follower.followerId) ||
+		[]
+	const userIdsToShowPosts = [currentUser?.username, ...followedUsersIds]
 
 	return (
 		<>
@@ -88,7 +88,8 @@ export default function Home() {
 							{/* {userIdsToShowPosts && (
 								<Feed userIds={userIdsToShowPosts} />
 							)} */}
-							<PostFeed userId={userId as string} />
+							{/* userId={userId as string} */}
+							<PostFeed />
 							{/* <Tabs /> */}
 						</main>
 						<aside
