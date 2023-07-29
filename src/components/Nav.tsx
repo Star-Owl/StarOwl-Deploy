@@ -51,40 +51,40 @@ function Nav() {
 			text: 'Nest',
 			icon: null,
 		},
-		{
-			active: false,
-			href: '/explore',
-			text: 'Explore',
-			icon: null,
-		},
-		...(currentUser
-			? [
-					{
-						active: false,
-						href: '/notifications',
-						text: 'Echoes',
-						icon: null,
-					},
-					{
-						active: false,
-						href: '/messages',
-						text: 'Chatter',
-						icon: null,
-					},
-					{
-						active: false,
-						href: '/bookmarks',
-						text: 'StarMark',
-						icon: null,
-					},
-			  ]
-			: []),
-		{
-			active: false,
-			href: '/settings',
-			text: 'Tweak',
-			icon: null,
-		},
+		// {
+		// 	active: false,
+		// 	href: '/explore',
+		// 	text: 'Explore',
+		// 	icon: null,
+		// },
+		// ...(currentUser
+		// 	? [
+		// 			{
+		// 				active: false,
+		// 				href: '/notifications',
+		// 				text: 'Echoes',
+		// 				icon: null,
+		// 			},
+		// 			{
+		// 				active: false,
+		// 				href: '/messages',
+		// 				text: 'Chatter',
+		// 				icon: null,
+		// 			},
+		// 			{
+		// 				active: false,
+		// 				href: '/bookmarks',
+		// 				text: 'StarMark',
+		// 				icon: null,
+		// 			},
+		// 	  ]
+		// 	: []),
+		// {
+		// 	active: false,
+		// 	href: '/settings',
+		// 	text: 'Tweak',
+		// 	icon: null,
+		// },
 		...(currentUser
 			? [
 					{
