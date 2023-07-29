@@ -16,7 +16,7 @@ const PostFeed: React.FC<PostFeedProps> = ({ userId }) => {
 		size,
 		setSize,
 		isReachingEnd,
-	} = usePosts()
+	} = usePosts(userId)
 
 	if (isLoadingInitialData) {
 		return <p>Loading...</p> // można dodać tutaj jakiś spinner lub ekran ładowania
@@ -26,7 +26,7 @@ const PostFeed: React.FC<PostFeedProps> = ({ userId }) => {
 		return (
 			<>
 				<section className="flex flex-col items-center gap-y-6 leading-6">
-					<h1 className="text-xxl2 font-bold">Welcome to StarOwl!</h1>
+					<h1 className="text-xxl2 font-bold">Wlecome to StarOwl!</h1>
 					<p className="items-center text-center text-color-text-disabled">
 						Your gateway to a universe of creativity and
 						inspiration. Start your journey by connecting with
@@ -78,3 +78,26 @@ const PostFeed: React.FC<PostFeedProps> = ({ userId }) => {
 }
 
 export default PostFeed
+
+// const PostFeed: React.FC<PostFeedProps> = ({ userId }) => {
+// 	const { data: followedUsers = [], error: followedUsersError } =
+// 		useFollowedUsers(userId)
+// 	const followedUsersIds = followedUsers.map((user: any) => user.id)
+// 	const { data: posts = [], error: postsError } = usePosts(followedUsersIds)
+
+// 	if (followedUsersError) {
+// 		return <div>Error loading followed users. Please try again later.</div>
+// 	}
+
+// 	if (postsError) {
+// 		return <div>Error loading posts. Please try again later.</div>
+// 	}
+
+// 	return (
+// 		<>
+// 			{posts.map((post: Record<string, any>) => (
+// 				<Post userId={post.userId} key={post.id} data={post} />
+// 			))}
+// 		</>
+// 	)
+// }

@@ -88,8 +88,7 @@ export default function Home() {
 							{/* {userIdsToShowPosts && (
 								<Feed userIds={userIdsToShowPosts} />
 							)} */}
-							{/* userId={userId as string} */}
-							<PostFeed />
+							<PostFeed userId={userId as string} />
 							{/* <Tabs /> */}
 						</main>
 						<aside

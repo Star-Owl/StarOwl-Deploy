@@ -15,8 +15,7 @@ const getKey = (
 	const params = new URLSearchParams()
 	params.set('_limit', String(PAGE_SIZE))
 	params.set('_start', String(pageIndex * PAGE_SIZE))
-
-	//if (userId) params.set('userId', userId)
+	if (userId) params.set('userId', userId)
 
 	return `/api/posts?${params}`
 }
