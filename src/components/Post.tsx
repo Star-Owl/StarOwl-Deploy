@@ -18,7 +18,7 @@ import UserPanel from './user/UserPanel'
 import useUser from 'src/hooks/useUser'
 import useCurrentUser from 'src/hooks/useCurrentUser'
 import useLike from 'src/hooks/useLike'
-import router from 'next/router'
+import router, { useRouter } from 'next/router'
 import { format, formatDistanceToNowStrict } from 'date-fns'
 import UserInfo from './user/UserInfo'
 import Tag from './user/Tag'
@@ -31,6 +31,7 @@ interface Props {
 }
 
 const Post: React.FC<Props> = ({ data = {}, userId }) => {
+	const router = useRouter()
 	const { data: currentUser } = useCurrentUser()
 	const { hasLiked, toggleLike } = useLike({ postId: data.id, userId })
 

@@ -18,6 +18,7 @@ import { PrismaAdapter } from '@next-auth/prisma-adapter'
 
 // Importing our Prisma database client
 import prisma from 'src/libs/prismadb'
+import { getSession } from 'next-auth/react'
 
 /**
  * ################################################
@@ -59,9 +60,7 @@ export const authOptions: AuthOptions = {
 
 				// If no user was found, or the user doesn't have a hashedPassword, throw an error
 				if (!user || !user?.hashedPassword) {
-					throw new Error(
-						`User Not Found - ${credentials.email}, ${credentials?.password}`,
-					)
+					throw new Error(`User Not Found`)
 				}
 
 				// Compare the provided password with the stored hashedPassword
@@ -72,9 +71,7 @@ export const authOptions: AuthOptions = {
 
 				// If the passwords don't match, throw an error
 				if (!isCorrectPassword) {
-					throw new Error(
-						`Invalid Password - ${user.email}, ${user.username}, ${user.hashedPassword}`,
-					)
+					throw new Error(`Invalid Password`)
 				}
 
 				// If everything checks out, return the user

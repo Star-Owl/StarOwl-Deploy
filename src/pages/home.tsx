@@ -14,6 +14,11 @@ import SplashScreen from './loading'
 import { GetStaticProps } from 'next'
 
 import PostFeed from '@ui/posts/PostFeed'
+import PanelItemTrends from '@ui/PanelItemTrends'
+import Twemoji from 'react-twemoji'
+import Panel from '@ui/Panel'
+import PanelItem from '@ui/PanelItem'
+import RecommendationPanel from '@ui/layout/RecommendationPanel'
 
 export default function Home() {
 	const router = useRouter()
@@ -88,7 +93,7 @@ export default function Home() {
 							{/* {userIdsToShowPosts && (
 								<Feed userIds={userIdsToShowPosts} />
 							)} */}
-							<PostFeed userId={userId as string} />
+							<PostFeed />
 							{/* <Tabs /> */}
 						</main>
 						<aside
@@ -112,50 +117,40 @@ export default function Home() {
 								/>
 								{/* <Search /> */}
 								{/* <Twemoji options={{ className: 'emoji' }}>
-							<Panel title="Trending feathers🪶" href="/">
-								<PanelItemTrends
-									title="Next JS"
-									category="Development"
-									stat="57.5K"
-								/>
-								<PanelItemTrends title="Figma" category="Design" stat="107.5K" />
-								<PanelItemTrends
-									title="Webflow"
-									category="Design"
-									stat="127.5K"
-								/>
-								<PanelItemTrends
-									title="Tailwind CSS"
-									category="Development"
-									stat="87.5K"
-								/>
-								<PanelItemTrends
-									title="Vercel"
-									category="Development"
-									stat="27.5K"
-								/>
-							</Panel>
-						</Twemoji> */}
-								{/* <Panel title="Who to follow" href="/">
-							<PanelItem
-								src="https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8Mjd8NzkwMjQ2NTJ8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60"
-								name="Charles Deluvio"
-								username="charlesdeluvio"
-								initials="CD"
-							/>
-							<PanelItem
-								src="https://images.unsplash.com/photo-1613951085587-cfe5d0a6cffc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MTZ8NzkwMjQ2NTJ8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60"
-								name="Tolga Ulkan"
-								username="tolgaulkan"
-								initials="TU"
-							/>
-							<PanelItem
-								src="https://images.unsplash.com/photo-1614777735430-7b46df56b404?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXw3OTAyNDY1Mnx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
-								name="Rob Potter"
-								username="robpotter"
-								initials="RB"
-							/>
-						</Panel> */}
+									<Panel title="Whooo~ to follow🪶" href="/">
+										<PanelItemTrends
+											title="Next JS"
+											category="Development"
+											stat="57.5K"
+										/>
+										<PanelItemTrends
+											title="Figma"
+											category="Design"
+											stat="107.5K"
+										/>
+										<PanelItemTrends
+											title="Webflow"
+											category="Design"
+											stat="127.5K"
+										/>
+										<PanelItemTrends
+											title="Tailwind CSS"
+											category="Development"
+											stat="87.5K"
+										/>
+										<PanelItemTrends
+											title="Vercel"
+											category="Development"
+											stat="27.5K"
+										/>
+									</Panel>
+								</Twemoji> */}
+								<Twemoji options={{ className: 'emoji' }}>
+									<RecommendationPanel
+										userId={currentUser.id}
+									/>
+								</Twemoji>
+
 								<Footer />
 								{/* <div className="flex items-center">
 							<Logo size={40} color="white" />

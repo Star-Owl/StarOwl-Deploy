@@ -1,17 +1,15 @@
 import useSWRInfinite from 'swr/infinite'
 import fetcher from 'src/libs/fetcher'
 
-const PAGE_SIZE = 5 // ilość postów na stronę
+const PAGE_SIZE = 7
 
 const getKey = (
 	pageIndex: number,
 	previousPageData: any[] | null,
 	userId?: string,
 ) => {
-	// jeśli poprzednia strona była pusta, to osiągnęliśmy koniec danych
-	if (previousPageData && previousPageData.length === 0) return null
+	if (previousPageData && previousPageData.length < PAGE_SIZE) return null
 
-	// generowanie URL
 	const params = new URLSearchParams()
 	params.set('_limit', String(PAGE_SIZE))
 	params.set('_start', String(pageIndex * PAGE_SIZE))
@@ -26,6 +24,8 @@ const usePosts = (userId?: string) => {
 			getKey(pageIndex, previousPageData, userId),
 		fetcher,
 	)
+
+	console.log(data)
 
 	const posts = data ? data.flat() : []
 	const isLoadingInitialData = !data && !error

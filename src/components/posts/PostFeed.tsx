@@ -26,7 +26,7 @@ const PostFeed: React.FC<PostFeedProps> = ({ userId }) => {
 		return (
 			<>
 				<section className="flex flex-col items-center gap-y-6 leading-6">
-					<h1 className="text-xxl2 font-bold">Wlecome to StarOwl!</h1>
+					<h1 className="text-xxl2 font-bold">Welcome to StarOwl!</h1>
 					<p className="items-center text-center text-color-text-disabled">
 						Your gateway to a universe of creativity and
 						inspiration. Start your journey by connecting with
@@ -66,7 +66,7 @@ const PostFeed: React.FC<PostFeedProps> = ({ userId }) => {
 						isLoadingMore
 							? 'Loading more...'
 							: isReachingEnd
-							? "That's all, folks! End of hoots. 🦉"
+							? 'No more posts'
 							: 'Load more'
 					}
 					disabled={isReachingEnd || isLoadingMore}

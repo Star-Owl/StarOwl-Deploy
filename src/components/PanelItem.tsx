@@ -1,32 +1,59 @@
 import Avatar from '@rd/Avatar'
-import Button from '@ui/Button_old'
+import Button from '@ui/Button'
+import UserPanel from './user/UserPanel'
+import { useRouter } from 'next/router'
+import useUser from 'src/hooks/useUser'
+import useCurrentUser from 'src/hooks/useCurrentUser'
+import useEditModal from 'src/hooks/useEditModal'
+import useFollow from 'src/hooks/useFollow'
+import React from 'react'
 
 interface Props {
-	name: string
-	username: string
-	src: string
-	initials: string
+	userId?: string
 }
 
-const PanelItem = ({ name, username, src, initials }: Props) => (
-	<div className="flex flex-1 items-center gap-x-2 px-4 py-3 hover:bg-slate-200">
-		<div className="flex items-center gap-x-2 flex-1">
-			<div className="flex flex-1 flex-none justify-start">
-				<Avatar src={src} alt={name} initials={initials} />
+const PanelItem = ({ userId }: Props) => {
+	const router = useRouter()
+
+	const { data: currentUser } = useCurrentUser()
+	const { data: fetchedUser, isLoading } = useUser(userId as string)
+
+	const editModal = useEditModal()
+
+	const { isFollowing, toggleFollow } = useFollow(userId as string)
+
+	const [isHovered, setIsHovered] = React.useState(false)
+
+	return (
+		<div className="flex flex-1 items-center px-6 py-6 hover:bg-color-text-dead">
+			<div className="flex items-center gap-x-6 flex-1">
+				<UserPanel type="small" userId={fetchedUser?.username} />
 			</div>
-			<div className="flex flex-col">
-				<p className="text-base font-semibold">{name}</p>
-				<p className="text-sm text-slate-600 font-medium">
-					@{username}
-				</p>
+			<div className="">
+				<Button
+					//onMouseEnter={() => setIsHovered(true)}
+					//onMouseLeave={() => setIsHovered(false)}
+					onClick={toggleFollow}
+					size="micro"
+					intent={
+						isHovered && isFollowing
+							? 'danger'
+							: isFollowing
+							? 'secondary'
+							: 'outline'
+					}
+					label={
+						isHovered && isFollowing
+							? 'Unfollow'
+							: isFollowing
+							? 'Following'
+							: 'Follow'
+					}
+					isFollowing={!isFollowing}
+				/>
 			</div>
 		</div>
-		<div className="">
-			<Button size="small" rounded="small">
-				Follow
-			</Button>
-		</div>
-	</div>
-)
+	)
+}
 
 export default PanelItem
