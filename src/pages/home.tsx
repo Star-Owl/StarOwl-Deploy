@@ -32,10 +32,10 @@ export default function Home() {
 		return <SplashScreen />
 	}
 
-	const followedUsersIds =
-		currentUser?.Following?.map((follower: any) => follower.followerId) ||
-		[]
-	const userIdsToShowPosts = [currentUser?.username, ...followedUsersIds]
+	// const followedUsersIds =
+	// 	currentUser?.Following?.map((follower: any) => follower.followerId) ||
+	// 	[]
+	// const userIdsToShowPosts = [currentUser?.username, ...followedUsersIds]
 
 	return (
 		<>
