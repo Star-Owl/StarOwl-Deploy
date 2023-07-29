@@ -53,27 +53,16 @@ export default async function handler(
 					},
 				})
 			} else {
-				// const followedUsers = currentUser.Following.map(
-				// 	(follower) => follower.followerId,
-				// )
-				// posts = await prisma.post.findMany({
-				// 	where: {
-				// 		userId: {
-				// 			in: [...followedUsers, currentUser.id],
-				// 		},
-				// 	},
-				// 	include: {
-				// 		user: true,
-				// 		comments: true,
-				// 	},
-				// 	skip: start,
-				// 	take: limit,
-				// 	orderBy: {
-				// 		createdAt: 'desc',
-				// 	},
-				// })
+				const followedUsers = currentUser.Following.map(
+					(follower) => follower.followerId,
+				)
 
 				posts = await prisma.post.findMany({
+					where: {
+						userId: {
+							in: [...followedUsers, currentUser.id],
+						},
+					},
 					include: {
 						user: true,
 						comments: true,
