@@ -79,19 +79,19 @@ const Form: React.FC<Props> = ({ placeholder, isComment, postId, width }) => {
 		const postText = e.target.value
 		setBody(postText)
 
-		const newLineCount = (postText.match(/\n/g) || []).length
-		const charCount = postText.length + newLineCount * 50
+		let additionalChars = 0
+		const lines = postText.split('\n')
+		for (let i = 0; i < lines.length - 1; i++) {
+			// Iterate till second last line
+			// This checks if the line contains only whitespace or a single character
+			if (/^\s*?.$/.test(lines[i])) {
+				additionalChars += 50
+			}
+		}
+
+		const charCount = postText.length + additionalChars
 
 		setCharCount(charCount)
-
-		//const validationResult = validatePostCreate(postText, currentUser?.role)
-		// if (postText.length > maxPostLength) {
-		// 	toast.error(e.target.value.length, {
-		// 		position: 'bottom-center',
-		// 		autoClose: 3000,
-		// 		theme: 'dark',
-		// 	})
-		// }
 	}
 
 	useEffect(() => {
