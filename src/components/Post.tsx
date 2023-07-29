@@ -46,10 +46,6 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 		router.push(`/posts/${data.id}`)
 	}, [router, data.id])
 
-	const stopPropagation = useCallback((ev: any) => {
-		ev.stopPropagation()
-	}, [])
-
 	const onLike = useCallback(
 		async (ev: any) => {
 			ev.stopPropagation()
@@ -103,10 +99,8 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 
 	return (
 		<div
-			//FIXME: Fix
 			onClick={goToPost}
 			className="
-				goToPost
 				flex
 				w-full
 				py-6
@@ -121,7 +115,10 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 				<div className="flex place-content-between mb-4 flex-row gap-6 px-6 md:px-0">
 					<div
 						className="flex flex-col gap-x-1 gap-2"
-						onClick={goToUser}
+						onClick={(e) => {
+							e.stopPropagation()
+							//goToUser(e)
+						}}
 					>
 						<HoverCardDemo size={48} userId={data.user.username} />
 					</div>
@@ -142,7 +139,7 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 							(username) => (
 								<a
 									href={`/${username}`}
-									onClick={stopPropagation}
+									onClick={(e) => e.stopPropagation()}
 								>
 									<Tag
 										size="small"
@@ -155,7 +152,7 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 								<a
 									className="text-color-accent hover:underline"
 									href={`/hashtag/${hashtag}`}
-									onClick={stopPropagation}
+									onClick={(e) => e.stopPropagation()}
 								>
 									#{hashtag}
 								</a>
@@ -170,7 +167,7 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 										target="_blank"
 										rel="noopener noreferrer"
 										className="text-color-accent hover:underline"
-										onClick={stopPropagation}
+										onClick={(e) => e.stopPropagation()}
 									>
 										{url}
 									</a>
@@ -196,16 +193,12 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 							[&_li>button]:flex-row
 							[&_li>button]:items-center
 							[&_li>button]:gap-x-4
-							[&_li>button:xl]:gap-x-3
-							[&_li>button:disabled]:cursor-not-allowed
-							[&_li>button:disabled]:opacity-[.12]
-							[&_li>button:disabled:hover]:opacity-[.48]
-							"
+							[&_li>button:xl]:gap-x-3"
 					>
 						<li className=" flex flex-1 items-start">
 							<button
 								onClick={(e) => {
-									stopPropagation
+									e.stopPropagation()
 									onLike(e)
 								}}
 								className={
@@ -239,7 +232,7 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 						<li className="flex flex-1 items-start">
 							<button
 								onClick={(e) => {
-									stopPropagation
+									e.stopPropagation()
 									onComment(e)
 								}}
 								className="
@@ -249,14 +242,12 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 									text-color-text
 									hover:opacity-100
 									hover:text-color-comment"
-								disabled
 							>
 								<OutlineMessage size={24} />
 								<span>
-									Disabled
-									{/* {data.comments?.length !== 0
+									{data.comments?.length !== 0
 										? formatNumber(data.comments?.length)
-										: ''} */}
+										: ''}
 								</span>
 							</button>
 						</li>
@@ -267,7 +258,10 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 									transition
 									text-color-text
 									hover:opacity-100
-									hover:text-color-repost"
+									hover:text-color-repost
+									disabled:cursor-not-allowed
+									disabled:opacity-[.12]
+									disabled:hover:opacity-[.48]"
 								disabled
 							>
 								<OutlineRepost size={24} />
@@ -284,7 +278,10 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 									transition
 									text-color-text
 									hover:opacity-100
-									hover:text-color-accent"
+									hover:text-color-accent
+									disabled:cursor-not-allowed
+									disabled:opacity-[.12]
+									disabled:hover:opacity-[.48]"
 								disabled
 							>
 								<Views className="icon" size={24} />
@@ -396,7 +393,9 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 						<div className="flex flex-row">
 							<a
 								className="text-color-text-disabled text-base"
-								onClick={stopPropagation}
+								onClick={(e) => {
+									e.stopPropagation()
+								}}
 							>
 								{createdAt} - {createdAtFull}
 							</a>
@@ -410,11 +409,10 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 										cursor-pointer
 										transition
 										disabled:cursor-not-allowed
-										disabled:opacity-[.12]"
+										disabled:opacity-50"
 								>
 									<OutlineBookmark size={24} />
-									Disabled
-									{/* Save */}
+									Save
 								</button>
 								<button
 									disabled
@@ -426,11 +424,10 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 										cursor-pointer
 										transition
 										disabled:cursor-not-allowed
-										disabled:opacity-[.12]"
+										disabled:opacity-50"
 								>
 									<Share size={24} />
-									Disabled
-									{/* Share */}
+									Share
 								</button>
 							</div>
 						</div>

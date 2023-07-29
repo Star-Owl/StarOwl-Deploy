@@ -1,3 +1,5 @@
+import { OutlineTrashCan } from './assets/OutlineTrashCan'
+
 export { Logo } from './assets/Logo'
 export { LogoText } from './assets/LogoText'
 
@@ -27,10 +29,6 @@ export { OutlineRepost } from './assets/OutlineRepost'
 export { OutlineEdit } from './assets/OutlineEdit'
 
 export { OutlineTrashCan } from './assets/OutlineTrashCan'
-
-export { OutlineLogOut } from './assets/OutlineLogOut'
-
-export { OutlineMore } from './assets/OutlineMore'
 
 export { OutlinePin } from './assets/OutlinePin'
 

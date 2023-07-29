@@ -131,7 +131,6 @@ const UserHero: React.ForwardRefRenderFunction<HTMLDivElement, Props> = (
 										intent="outline"
 										size="small"
 										label="Edit"
-										disabled
 										onClick={editModal.onOpen}
 									/>
 								) : (
