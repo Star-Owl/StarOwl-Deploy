@@ -19,6 +19,7 @@ import {
 	FillBookmark,
 	OutlineSettings,
 	FillSettings,
+	OutlineLogOut,
 } from 'src/icons/Icons'
 import toast from 'react-hot-toast'
 import { signOut } from 'next-auth/react'
@@ -113,6 +114,7 @@ function Nav() {
 		'/messages': <OutlineMessage className="w-8" />,
 		'/bookmarks': <OutlineBookmark className="w-8" />,
 		'/settings': <OutlineSettings className="w-8" />,
+		'': <OutlineLogOut className="w-8" />,
 	}
 
 	return (

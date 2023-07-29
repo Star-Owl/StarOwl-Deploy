@@ -163,6 +163,7 @@ const Form: React.FC<Props> = ({ placeholder, isComment, postId, width }) => {
 				theme: 'dark',
 			})
 			setBody('')
+			setCharCount(0)
 			mutatePosts()
 			mutatePost()
 		} catch (error) {

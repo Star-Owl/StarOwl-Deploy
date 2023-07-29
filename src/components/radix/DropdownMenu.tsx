@@ -1,7 +1,7 @@
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 
 import cx from 'classnames'
-import { ReactNode } from 'react'
+import { ReactNode, useCallback } from 'react'
 import NavItem from '@ui/NavItem'
 
 import {
@@ -22,7 +22,9 @@ import {
 	OutlinePin,
 	Views,
 	Share,
+	OutlineMore,
 } from 'src/icons/Icons'
+import Button from '@ui/Button'
 
 interface AccordionItem {
 	href: string
@@ -117,45 +119,59 @@ const post: AccordionItem[] = [
 	},
 ]
 
-const DropdownMenuDemo = () => (
-	<DropdownMenuPrimitive.Root>
-		<DropdownMenuPrimitive.Trigger asChild>
-			<button
-				className="hover:bg-color-accent-subtle hover:text-color-accent transition rounded-[.875rem] flex justify-center items-center h-12 w-12"
-				aria-label="Customize options"
-			>
-				<HiOutlineEllipsisHorizontal className="h-6 w-6" />
-			</button>
-		</DropdownMenuPrimitive.Trigger>
+const DropdownMenuDemo = () => {
+	const stopPropagation = useCallback((ev: any) => {
+		ev.stopPropagation()
+	}, [])
 
-		<DropdownMenuPrimitive.Portal>
-			<DropdownMenuPrimitive.Content
-				sideOffset={0}
-				alignOffset={0}
-				align="end"
-				className={cx(
-					'radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down',
-					'rounded-[1rem] shadow-2xl w-80 overflow-hidden',
-					'bg-color-primary-dark py-4 px-4 gap-2 flex flex-col',
-				)}
-			>
-				{myPost.map(({ href, text, width, size, icon }, i) => (
-					<DropdownMenuPrimitive.Item
-						key={`header-${i}`}
-						// value={`item-${i + 1}`}
-						className="focus:outline-none overflow-hidden"
+	return (
+		<div onClick={stopPropagation}>
+			<DropdownMenuPrimitive.Root>
+				<DropdownMenuPrimitive.Trigger asChild>
+					<Button
+						intent="icon"
+						size="icon"
+						aria-label="Customize options"
+						// disabled
 					>
-						<NavItem href="{href}" width={'full'} size={'drowDown'}>
-							{icon}
-							<div className="inline-flex flex-none text-lg">
-								{text}
-							</div>
-						</NavItem>
-					</DropdownMenuPrimitive.Item>
-				))}
-			</DropdownMenuPrimitive.Content>
-		</DropdownMenuPrimitive.Portal>
-	</DropdownMenuPrimitive.Root>
-)
+						<OutlineMore className="w-8" />
+					</Button>
+				</DropdownMenuPrimitive.Trigger>
+
+				<DropdownMenuPrimitive.Portal>
+					<DropdownMenuPrimitive.Content
+						sideOffset={0}
+						alignOffset={0}
+						align="end"
+						className={cx(
+							'radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down',
+							'rounded-[1rem] shadow-2xl w-80 overflow-hidden',
+							'bg-color-primary-dark py-4 px-4 gap-2 flex flex-col',
+						)}
+					>
+						{myPost.map(({ href, text, width, size, icon }, i) => (
+							<DropdownMenuPrimitive.Item
+								key={`header-${i}`}
+								// value={`item-${i + 1}`}
+								className="focus:outline-none overflow-hidden"
+							>
+								<NavItem
+									href="{href}"
+									width={'full'}
+									size={'drowDown'}
+								>
+									{icon}
+									<div className="inline-flex flex-none text-lg">
+										{text}
+									</div>
+								</NavItem>
+							</DropdownMenuPrimitive.Item>
+						))}
+					</DropdownMenuPrimitive.Content>
+				</DropdownMenuPrimitive.Portal>
+			</DropdownMenuPrimitive.Root>
+		</div>
+	)
+}
 
 export default DropdownMenuDemo
