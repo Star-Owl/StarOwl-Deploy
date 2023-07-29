@@ -145,11 +145,11 @@ export default function Home() {
 										/>
 									</Panel>
 								</Twemoji> */}
-								<Twemoji options={{ className: 'emoji' }}>
+								{/* <Twemoji options={{ className: 'emoji' }}>
 									<RecommendationPanel
 										userId={currentUser.id}
 									/>
-								</Twemoji>
+								</Twemoji> */}
 
 								<Footer />
 								{/* <div className="flex items-center">
