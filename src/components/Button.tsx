@@ -14,7 +14,7 @@ interface Props {
 		| 'icon'
 	isFollowing?: boolean
 	fullWidth?: boolean
-	size?: 'micro' | 'small' | 'default' | 'large'
+	size?: 'icon' | 'micro' | 'small' | 'default' | 'large'
 	onClick?: () => void
 	disabled?: boolean
 	outline?: boolean
@@ -27,7 +27,7 @@ const ButtonStyles = cva(
         items-center
         transition
         font-bold
-        disabled:opacity-50
+        disabled:opacity-[.48]
         disabled:cursor-not-allowed
 		leading-6
     `,
@@ -42,9 +42,10 @@ const ButtonStyles = cva(
 					'bg-transparent ring-inset ring-2 ring-color-text hover:bg-color-text hover:text-color-primary-dark ',
 				ghost: 'bg-accent text-white border-accent transition-all duration-200 hover:bg-accent_darker disabled:hover:bg-accent',
 				text: '/* twoje style dla wariantu text */',
-				icon: '/* twoje style dla wariantu icon */',
+				icon: 'hover:bg-color-accent-subtle text-color hover:text-color-accent',
 			},
 			size: {
+				icon: 'p-4 rounded-[0.875rem]',
 				micro: 'text-sm px-[1.5rem] py-[.75rem] rounded-[0.625rem]',
 				small: 'text-base px-[2rem] py-[1rem] rounded-[0.875rem]',
 				default: 'text-lg px-[2.5rem] py-[1.25rem] rounded-[1rem]',

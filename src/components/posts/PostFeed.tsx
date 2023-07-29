@@ -66,7 +66,7 @@ const PostFeed: React.FC<PostFeedProps> = ({ userId }) => {
 						isLoadingMore
 							? 'Loading more...'
 							: isReachingEnd
-							? 'No more posts'
+							? "That's all, folks! End of hoots. 🦉"
 							: 'Load more'
 					}
 					disabled={isReachingEnd || isLoadingMore}
