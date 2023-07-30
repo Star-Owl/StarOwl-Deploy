@@ -9,6 +9,7 @@ interface Props {
 	size: 'default' | 'drowDown'
 	children: ReactNode
 	onClick?: () => void
+	disabled?: boolean
 }
 
 const NavItemStyles = cva(
@@ -19,6 +20,8 @@ const NavItemStyles = cva(
 		transition
 		xl:justify-start
 		sm:flex
+		disabled:opacity-[.48]
+		disabled:cursor-not-allowed
 	`,
 	{
 		variants: {

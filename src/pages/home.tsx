@@ -67,6 +67,7 @@ export default function Home() {
 							gap-6
 							md:px-0
 							grid-cols-12
+							xl:max-w-screen-2xl
 							xl:grid
 							lg:gap-12"
 					>

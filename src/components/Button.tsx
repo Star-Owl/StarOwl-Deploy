@@ -18,6 +18,7 @@ interface Props {
 	onClick?: () => void
 	disabled?: boolean
 	outline?: boolean
+	event?: 'dropdown'
 }
 
 const ButtonStyles = cva(
@@ -68,6 +69,7 @@ const Button: React.FC<Props> = ({
 	onClick,
 	size = 'default',
 	disabled,
+	event,
 }: Props) => {
 	const buttonClass = classNames(ButtonStyles({ intent, size, fullWidth }), {
 		disabled,
@@ -77,7 +79,9 @@ const Button: React.FC<Props> = ({
 		<button
 			disabled={disabled}
 			onClick={onClick}
-			className={`${buttonClass} ${isFollowing ? 'following' : ''}`}
+			className={`${buttonClass} ${isFollowing ? 'following' : ''} ${
+				event === 'dropdown' ? 'IconButton' : ''
+			}`}
 		>
 			{children}
 			{label}

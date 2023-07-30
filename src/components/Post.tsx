@@ -101,10 +101,14 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 		return () => window.removeEventListener('scroll', onScroll)
 	}, [])
 
+	function getRandomNumber(min: number, max: number): number {
+		return Math.floor(Math.random() * (max - min + 1)) + min
+	}
+
 	return (
 		<div
 			//FIXME: Fix
-			onClick={goToPost}
+			// onClick={goToPost}
 			className="
 				goToPost
 				flex
@@ -253,7 +257,7 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 							>
 								<OutlineMessage size={24} />
 								<span>
-									Disabled
+									{formatNumber(getRandomNumber(0, 9_999))}
 									{/* {data.comments?.length !== 0
 										? formatNumber(data.comments?.length)
 										: ''} */}
@@ -272,8 +276,7 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 							>
 								<OutlineRepost size={24} />
 								<span>
-									Disabled
-									{/* {formatNumber(getRandomNumber(0, 999_999))} */}
+									{formatNumber(getRandomNumber(0, 999_999))}
 								</span>
 							</button>
 						</li>
@@ -289,8 +292,7 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 							>
 								<Views className="icon" size={24} />
 								<span>
-									Disabled
-									{/* {formatNumber(getRandomNumber(0, 9_999))} */}
+									{formatNumber(getRandomNumber(0, 9_999))}
 								</span>
 							</button>
 						</li>
@@ -398,7 +400,8 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 								className="text-color-text-disabled text-base"
 								onClick={stopPropagation}
 							>
-								{createdAt} - {createdAtFull}
+								{createdAt}
+								{/* {createdAt} - {createdAtFull} */}
 							</a>
 							<div className="flex flex-1 flex-row justify-end items-center gap-6">
 								<button
@@ -413,8 +416,7 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 										disabled:opacity-[.12]"
 								>
 									<OutlineBookmark size={24} />
-									Disabled
-									{/* Save */}
+									Save
 								</button>
 								<button
 									disabled
@@ -429,8 +431,7 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 										disabled:opacity-[.12]"
 								>
 									<Share size={24} />
-									Disabled
-									{/* Share */}
+									Share
 								</button>
 							</div>
 						</div>

@@ -32,7 +32,7 @@ const RecommendationPanel: React.FC<RecommendationPanelProps> = ({
 		}
 
 		fetchRecommendations()
-	}, [userId])
+	}, [userId, recommendedUsers])
 
 	return (
 		<Twemoji options={{ className: 'emoji' }}>
