@@ -129,7 +129,7 @@ const Post: React.FC<Props> = ({ data = {}, userId }) => {
 					>
 						<HoverCardDemo size={48} userId={data.user.username} />
 					</div>
-					<DropdownMenuDemo />
+					<DropdownMenuDemo userId={data.user.username} />
 				</div>
 				<Twemoji options={{ className: 'emoji' }}>
 					<div
