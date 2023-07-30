@@ -36,7 +36,7 @@ export default async function handler(
 					notIn: followingIds,
 				},
 			},
-			take: 5,
+			take: 3,
 			orderBy: {
 				id: 'desc',
 			},
