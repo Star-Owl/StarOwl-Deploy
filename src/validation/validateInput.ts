@@ -9,8 +9,8 @@ export const validateInput = async (input: any, schema: z.ZodSchema<any>) => {
 			const errorList = error.issues.map(
 				(issue, index) => `${index + 1}: ${issue.message}`,
 			)
-			return Promise.reject(errorList)
+			return Promise.reject(new Error(JSON.stringify(errorList)))
 		}
-		return Promise.reject(['Unknown error'])
+		return Promise.reject(new Error('Unknown error'))
 	}
 }

@@ -23,6 +23,7 @@ import { useStickyContext } from 'src/contexts/StickyContent'
 import Button from '../Button'
 import HeaderProfile from '@ui/HeaderProfile'
 import UserPanel from '@ui/user/UserPanel'
+import EditModal from '@ui/modals/EditModal'
 
 interface Props {
 	userId: string
@@ -127,13 +128,13 @@ const UserHero: React.ForwardRefRenderFunction<HTMLDivElement, Props> = (
 							</div>
 							<div>
 								{currentUser?.username === userId ? (
-									<Button
-										intent="outline"
-										size="small"
-										label="Edit"
-										disabled
-										onClick={editModal.onOpen}
-									/>
+									// <Button
+									// 	intent="outline"
+									// 	size="small"
+									// 	label="Edit"
+									// 	onClick={editModal.onOpen}
+									// />
+									<EditModal />
 								) : (
 									<Button
 										//onMouseEnter={() => setIsHovered(true)}

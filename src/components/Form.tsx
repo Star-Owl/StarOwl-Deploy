@@ -126,27 +126,6 @@ const Form: React.FC<Props> = ({ placeholder, isComment, postId, width }) => {
 		}
 	}, [body])
 
-	function parseBodyText(text: string): string {
-		let parsedText = text
-
-		// Wyszukaj hashtagi i zamień na linki
-		parsedText = parsedText.replace(
-			/#(\w+)/g,
-			'<a href="/hashtag/$1">#$1</a>',
-		)
-
-		// Wyszukaj nazwy użytkowników i zamień na linki
-		parsedText = parsedText.replace(/@(\w+)/g, '<a href="/user/$1">@$1</a>')
-
-		// Wyszukaj URL-e i zamień na linki
-		parsedText = parsedText.replace(
-			/\b((http|https):\/\/\S+)/g,
-			'<a href="$1">$1</a>',
-		)
-
-		return parsedText
-	}
-
 	const onSubmit = useCallback(async () => {
 		try {
 			setIsLoading(true)
@@ -255,20 +234,11 @@ const Form: React.FC<Props> = ({ placeholder, isComment, postId, width }) => {
 			) : (
 				<div>
 					<h1 className="text-2xl text-center mb-4 font-bold">
-						Wlecome to StarOwl!
+						Welcome to StarOwl!
 					</h1>
 					<div className="flex flex-row items-center justify-center gap-4">
 						<LoginModal />
 						<RegisterModal />
-						{/* <Button
-							intent="outline"
-							label="Login"
-							onClick={loginModal.onOpen}
-						/> */}
-						{/* <Button
-							label="Register"
-							onClick={registerModal.onOpen}
-						/> */}
 					</div>
 				</div>
 			)}

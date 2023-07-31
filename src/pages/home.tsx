@@ -19,6 +19,7 @@ import Twemoji from 'react-twemoji'
 import Panel from '@ui/Panel'
 import PanelItem from '@ui/PanelItem'
 import RecommendationPanel from '@ui/layout/RecommendationPanel'
+import Aside from '@ui/layout/Aside'
 
 export default function Home() {
 	const router = useRouter()
@@ -91,81 +92,10 @@ export default function Home() {
 									"What's illuminating your world today?"
 								}
 							/>
-							{/* {userIdsToShowPosts && (
-								<Feed userIds={userIdsToShowPosts} />
-							)} */}
-							<PostFeed />
 							{/* <Tabs /> */}
+							<PostFeed />
 						</main>
-						<aside
-							className="
-								col-span-2
-								mr-6
-								hidden
-								lg:flex
-								flex-col
-								w-1/2
-								xl:w-[375px]
-								xl:col-span-3"
-						>
-							<div className="sticky top-10 flex flex-col gap-6">
-								<Input
-									placeholder="Search roost for..."
-									disabled
-									onChange={function (
-										event: ChangeEvent<HTMLInputElement>,
-									): void {}}
-								/>
-								{/* <Search /> */}
-								{/* <Twemoji options={{ className: 'emoji' }}>
-									<Panel title="Whooo~ to follow🪶" href="/">
-										<PanelItemTrends
-											title="Next JS"
-											category="Development"
-											stat="57.5K"
-										/>
-										<PanelItemTrends
-											title="Figma"
-											category="Design"
-											stat="107.5K"
-										/>
-										<PanelItemTrends
-											title="Webflow"
-											category="Design"
-											stat="127.5K"
-										/>
-										<PanelItemTrends
-											title="Tailwind CSS"
-											category="Development"
-											stat="87.5K"
-										/>
-										<PanelItemTrends
-											title="Vercel"
-											category="Development"
-											stat="27.5K"
-										/>
-									</Panel>
-								</Twemoji> */}
-								{currentUser && (
-									<Twemoji options={{ className: 'emoji' }}>
-										<RecommendationPanel
-											userId={currentUser.id}
-										/>
-									</Twemoji>
-								)}
-
-								<Footer />
-								{/* <div className="flex items-center">
-							<Logo size={40} color="white" />
-							<Twemoji options={{ className: 'emoji' }}>
-								<div className="gap-x-[2px] flex flex-wrap items-center">
-									{`\u00A9 ♠️♦️ Poker Cats Creations ♣️♥️ ${currentYear}`}
-								</div>
-							</Twemoji>
-							<Logo size={40} color="white" />
-						</div> */}
-							</div>
-						</aside>
+						<Aside />
 					</div>
 				</>
 			)}

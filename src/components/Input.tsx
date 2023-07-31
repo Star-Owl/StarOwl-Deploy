@@ -67,6 +67,14 @@ interface InputProps {
 	 * Event handler for the key down event.
 	 */
 	onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void
+	/**
+	 * Event handler for the focus event.
+	 */
+	onFocus?: () => void
+	/**
+	 * Event handler for the blur event.
+	 */
+	onBlur?: () => void
 }
 
 const Input: React.FC<InputProps> = ({
@@ -81,6 +89,8 @@ const Input: React.FC<InputProps> = ({
 	icon,
 	textIcon,
 	onKeyDown,
+	onFocus,
+	onBlur,
 }) => {
 	const [inputType, setInputType] = useState(type)
 	const [currentIcon, setCurrentIcon] = useState(icon)
@@ -107,6 +117,8 @@ const Input: React.FC<InputProps> = ({
 				value={value}
 				placeholder={placeholder}
 				type={inputType}
+				onFocus={onFocus}
+				onBlur={onBlur}
 				className="
                     w-full
 					max-h-16

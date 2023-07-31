@@ -38,7 +38,11 @@ const RecommendationPanel: React.FC<RecommendationPanelProps> = ({
 		<Twemoji options={{ className: 'emoji' }}>
 			<Panel title="Whooo~ to follow 🪶" href="/">
 				{recommendedUsers.map((user: User) => (
-					<PanelItem key={user.username} userId={user.username} />
+					<PanelItem
+						content
+						key={user.username}
+						userId={user.username}
+					/>
 				))}
 			</Panel>
 		</Twemoji>

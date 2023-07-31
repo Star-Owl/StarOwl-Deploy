@@ -19,6 +19,8 @@ export const ModalContext = createContext({
 	setLoginModalVisible: (value: boolean) => {},
 	isRegisterModalVisible: false,
 	setRegisterModalVisible: (value: boolean) => {},
+	isEditModalVisible: false,
+	setEditModalVisible: (value: boolean) => {},
 })
 
 /**
@@ -35,6 +37,8 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
 	// Define state for the registration modal and a function to alter it
 	const [isRegisterModalVisible, setRegisterModalVisible] = useState(false)
 
+	const [isEditModalVisible, setEditModalVisible] = useState(false)
+
 	/**
 	 * The context provider passes down state and state-altering functions to its children.
 	 * Every child wrapped in ModalProvider now has access to these values.
@@ -46,6 +50,8 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
 				setLoginModalVisible,
 				isRegisterModalVisible,
 				setRegisterModalVisible,
+				isEditModalVisible,
+				setEditModalVisible,
 			}}
 		>
 			{children}

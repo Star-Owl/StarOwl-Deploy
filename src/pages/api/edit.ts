@@ -21,6 +21,19 @@ export default async function handler(
 			throw new Error('Missing fields')
 		}
 
+		// Check if the username is already taken by another user
+		const existingUser = await prisma.user.findUnique({
+			where: {
+				username,
+			},
+		})
+
+		if (existingUser && existingUser.id !== currentUser.id) {
+			return res
+				.status(400)
+				.json({ message: 'Username is already taken' })
+		}
+
 		const updatedUser = await prisma.user.update({
 			where: {
 				id: currentUser.id,
